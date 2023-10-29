@@ -24,7 +24,7 @@
         </div>
       </div>
     </div>
-    <!-- 头部第二行 搜索区域 -->
+    <!--头部第二行 搜索区域-->
     <div class="bottom">
       <h1 class="logoArea">
         <a class="logo" title="尚品汇" href="###" target="_blank">
@@ -121,7 +121,7 @@ export default {
           box-sizing: border-box;
           width: 490px;
           height: 32px;
-          padding: 0 4px;
+          padding: 0px 4px;
           border: 2px solid #ea4a36;
           float: left;
 
