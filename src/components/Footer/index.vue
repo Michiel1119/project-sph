@@ -99,10 +99,9 @@
 
 <script>
 export default {
-  name: 'Footer',
+  name: 'sph-footer',
   data() {
-    return {
-    }
+    return {}
   },
 }
 </script>
