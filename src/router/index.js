@@ -5,14 +5,17 @@ Vue.use(VueRouter)
 // 配置路由
 const routes = [
     {
-        path: "/home",
+        path: '/home',
         component: () => import('@/views/Home'),
         meta: {showFooter: true}
     },
     {
-        path: "/search",
+        name: 'search',
+        path: '/search/:keyword?',
         component: () => import('@/views/Search'),
-        meta: {showFooter: true}
+        meta: {showFooter: true},
+        // props 传参第一种写法：boolean 值
+        props: true
     },
     {
         path: '/login',

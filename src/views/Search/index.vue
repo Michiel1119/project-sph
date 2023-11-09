@@ -1,15 +1,18 @@
 <template>
   <div>
-    我是Serach组件
+    <!-- <h1>params参数：{{ $route.params.keyword }}</h1> -->
+    <!-- <h1>query参数：{{ $route.query.upperCase }}</h1> -->
+    <h1>params参数：{{ keyword }}</h1>
+    <h1>query参数：{{ $route.query.upperCase }}</h1>
   </div>
 </template>
 
 <script>
 export default {
   name: 'index',
+  props: ['keyword'],
   data() {
-    return {
-    }
+    return {}
   },
 }
 </script>

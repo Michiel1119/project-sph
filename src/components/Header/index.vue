@@ -24,7 +24,7 @@
         </div>
       </div>
     </div>
-    <!--头部第二行 搜索区域-->
+    <!-- 头部第二行 搜索区域 -->
     <div class="bottom">
       <h1 class="logoArea">
         <router-link class="logo" to="/home">
@@ -33,7 +33,7 @@
       </h1>
       <div class="searchArea">
         <form action="###" class="searchForm">
-          <input type="text" id="autocomplete" class="input-error input-xxlarge"/>
+          <input type="text" id="autocomplete" class="input-error input-xxlarge" v-model="keyword"/>
           <button class="sui-btn btn-xlarge btn-danger" type="button" @click="goSearch">搜索</button>
         </form>
       </div>
@@ -45,11 +45,45 @@
 export default {
   name: 'sph-header',
   data() {
-    return {}
+    return {
+      keyword: ''
+    }
   },
   methods: {
+    // 搜索按钮的回调函数，需要跳转到 search 路由
     goSearch() {
-      this.$router.push('/serach')
+      // 路由的参数传递
+      // 一、字符串形式
+      // this.$router.push('/search/' + this.keyword + '?upperCase=' + this.keyword.toUpperCase())
+      // 二、模板字符串形式
+      // this.$router.push(`/search/${this.keyword}?upperCase=${this.keyword.toUpperCase()}`)
+      // 三、对象形式（常用）
+      /*this.$router.push({
+        name: 'search',
+        params: {keyword: this.keyword},
+        query: {upperCase: this.keyword.toUpperCase()}
+      })*/
+
+      // 路由传递参数（对象写法）path 不能结合 params 参数一起使用
+      /*this.$router.push({
+        path: '/search',
+        params: {keyword: this.keyword},
+        query: {upperCase: this.keyword.toUpperCase()}
+      })*/
+      // 指定 params 参数可传可不传，在配置路由时在占位后面补上?
+      // this.$router.push({name: 'search', query: {upperCase: this.keyword.toUpperCase()}})
+      // params 参数为空字符串，设置为 '' || undefined
+      /*this.$router.push({
+        name: 'search',
+        params: {keyword: '' || undefined},
+        query: {upperCase: this.keyword.toUpperCase()}
+      })*/
+      // 传递 props 参数
+      this.$router.push({
+        name: 'search',
+        params: {keyword: this.keyword},
+        query: {upperCase: this.keyword.toUpperCase()}
+      })
     }
   }
 }
@@ -125,7 +159,7 @@ export default {
           box-sizing: border-box;
           width: 490px;
           height: 32px;
-          padding: 0px 4px;
+          padding: 0 4px;
           border: 2px solid #ea4a36;
           float: left;
 
