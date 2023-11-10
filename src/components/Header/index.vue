@@ -63,7 +63,6 @@ export default {
         params: {keyword: this.keyword},
         query: {upperCase: this.keyword.toUpperCase()}
       })*/
-
       // 路由传递参数（对象写法）path 不能结合 params 参数一起使用
       /*this.$router.push({
         path: '/search',
@@ -83,6 +82,9 @@ export default {
         name: 'search',
         params: {keyword: this.keyword},
         query: {upperCase: this.keyword.toUpperCase()}
+      }, () => {
+      }, (error) => {
+        console.log(error)
       })
     }
   }
