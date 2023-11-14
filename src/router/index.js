@@ -2,6 +2,27 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 // 使用插件
 Vue.use(VueRouter)
+// 备份 VueRouter 原型对象的 push 和 replace 方法
+let originPush = VueRouter.prototype.push
+let originReplace = VueRouter.prototype.replace
+// 重写 push 和 replace 方法
+// 第一个参数 location：告诉原来的 push 方法，你要向哪里跳转（传递哪些参数）
+VueRouter.prototype.push = function (location, resolve, reject) {
+    if (resolve && reject) {
+        // call 和 apply 都可以调用函数一次，都可以篡改函数的上下文一次，使用 call 方法传递的参数之间需要使用逗号隔开，而 apply 方法使用一个数组来传递参数
+        originPush.call(this, location, resolve, reject)
+    } else {
+        originPush.call(this, location, () => {}, () => {})
+    }
+}
+VueRouter.prototype.replace = function (location, resolve, reject) {
+    if (resolve && reject) {
+        // call 和 apply 都可以调用函数一次，都可以篡改函数的上下文一次，使用 call 方法传递的参数之间需要使用逗号隔开，而 apply 方法使用一个数组来传递参数
+        originReplace.call(this, location, resolve, reject)
+    } else {
+        originReplace.call(this, location, () => {}, () => {})
+    }
+}
 // 配置路由
 const routes = [
     {

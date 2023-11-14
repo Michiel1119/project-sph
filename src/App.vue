@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <Header></Header>
+    <Header />
     <router-view></router-view>
     <!-- 在 Home、Search 显示，在 Login、Register 隐藏 -->
-    <Footer v-show="$route.meta.showFooter"></Footer>
+    <Footer v-show="$route.meta.showFooter" />
   </div>
 </template>
 
