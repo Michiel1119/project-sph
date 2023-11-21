@@ -4,6 +4,9 @@ import App from './App.vue'
 import TypeNav from '@/views/Home/TypeNav'
 // 引入路由
 import router from './router'
+// 测试接口
+import { reqCategoryList } from "@/api"
+reqCategoryList()
 
 Vue.config.productionTip = false
 // 全局注册组件（要写在创建 Vue 实例之前），第一个参数：组件别名，第二个参数：组件
