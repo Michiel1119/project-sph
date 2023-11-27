@@ -8,8 +8,7 @@
 export default {
   name: 'sph-register',
   data() {
-    return {
-    }
+    return {}
   },
 }
 </script>

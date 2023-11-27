@@ -8,8 +8,7 @@
 export default {
   name: 'sph-login',
   data() {
-    return {
-    }
+    return {}
   },
 }
 </script>

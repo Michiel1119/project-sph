@@ -12,7 +12,9 @@ VueRouter.prototype.push = function (location, resolve, reject) {
         // call 和 apply 都可以调用函数一次，都可以篡改函数的上下文一次，使用 call 方法传递的参数之间需要使用逗号隔开，而 apply 方法使用一个数组来传递参数
         originPush.call(this, location, resolve, reject)
     } else {
-        originPush.call(this, location, () => {}, () => {})
+        originPush.call(this, location, () => {
+        }, () => {
+        })
     }
 }
 VueRouter.prototype.replace = function (location, resolve, reject) {
@@ -20,7 +22,9 @@ VueRouter.prototype.replace = function (location, resolve, reject) {
         // call 和 apply 都可以调用函数一次，都可以篡改函数的上下文一次，使用 call 方法传递的参数之间需要使用逗号隔开，而 apply 方法使用一个数组来传递参数
         originReplace.call(this, location, resolve, reject)
     } else {
-        originReplace.call(this, location, () => {}, () => {})
+        originReplace.call(this, location, () => {
+        }, () => {
+        })
     }
 }
 // 配置路由

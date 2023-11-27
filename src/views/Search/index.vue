@@ -14,7 +14,7 @@ export default {
   props: ['keyword', 'a', 'b'],
   data() {
     return {}
-  },
+  }
 }
 </script>
 
