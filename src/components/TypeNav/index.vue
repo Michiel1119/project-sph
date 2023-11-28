@@ -15,8 +15,9 @@
       </nav>
       <div class="sort">
         <div class="all-sort-list2">
-          <div class="item" v-for="(c1, index) in categoryList" :key="c1.categoryId">
-            <h3>
+          <div class="item" v-for="(c1, index) in categoryList" :key="c1.categoryId"
+               :class="{cur: currentIndex==index}">
+            <h3 @mouseenter="changeIndex(index)" @mouseleave="resetIndex">
               <a href="">{{ c1.categoryName }}</a>
             </h3>
             <div class="item-list clearfix">
@@ -45,6 +46,12 @@ import {mapState} from 'vuex'
 
 export default {
   name: 'sph-type-nav',
+  data() {
+    return {
+      // 存储用户鼠标当前移动到了哪个一级分类上，初始值设置为 -1
+      currentIndex: -1
+    }
+  },
   // 组件挂载完毕后，向服务器发送请求
   mounted() {
     // 通知 Vuex 发送请求，获取数据，存储在 store 中
@@ -54,6 +61,16 @@ export default {
     ...mapState({
       categoryList: state => state.home.categoryList
     })
+  },
+  methods: {
+    // 鼠标进入时，修改项响应式数据 currentIndex 的值
+    changeIndex(index) {
+      // index: 鼠标移上某一个一级分类的元素的索引值
+      this.currentIndex = index
+    },
+    resetIndex() {
+      this.currentIndex = -1
+    }
   }
 }
 </script>
@@ -102,7 +119,7 @@ export default {
       .all-sort-list2 {
         .item {
           h3 {
-            line-height: 30px;
+            line-height: 28px;
             font-size: 14px;
             font-weight: 400;
             overflow: hidden;
@@ -174,6 +191,9 @@ export default {
               display: block;
             }
           }
+        }
+        .cur {
+          background-color: skyblue;
         }
       }
     }
